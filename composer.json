@@ -8,7 +8,10 @@
             "email": "mehdi0121.ir@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^7|^8|^9"
+    },
     "autoload": {
         "psr-4": {
             "Mehdi0121\\Randcode\\":"src/",
@@ -24,5 +27,8 @@
                 "RandCode": "Mehdi0121\\Randcode\\Randcode"
             }
         }
+    },
+    "suggest": {
+        "laravel/framework":"Tested on laravel"
     }
 }
