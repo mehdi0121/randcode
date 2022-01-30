@@ -24,12 +24,12 @@ trait RandFather
     public function Giftcard($pat)
     {
         # code...
-        return $this->Gen("xxx-xxx-xxx",false);
+        return $this->Pattern("xxx-xxx-xxx");
     }
 
     public function SerialNumber()
     {
-        return $this->Gen($this->serialPatern);
+        return $this->Pattern($this->serialPatern);
     }
 
 
