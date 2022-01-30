@@ -15,7 +15,7 @@ class RandCodeServiceProvider extends ServiceProvider
     {
         # code...
         $this->app->singleton('randcode',function (){
-            return new RandCodeServiceProvider();
+            return new RandServies();
         });
     }
 
