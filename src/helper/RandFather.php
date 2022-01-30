@@ -5,7 +5,10 @@ namespace Mehdi0121\Randcode\helper;
 
 trait RandFather
 {
+
+
     public $serialPatern="xxxx-xxxx-xxxx-xxxx";
+    public $count=1;
     public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true)
     {
         # code...
@@ -20,32 +23,6 @@ trait RandFather
         }
         return $code;
     }
-
-    public function Giftcard($pat)
-    {
-        # code...
-        return $this->Pattern("xxx-xxx-xxx");
-    }
-
-    public function SerialNumber()
-    {
-        return $this->Pattern($this->serialPatern);
-    }
-
-
-    public function Pattern($patern)
-    {
-      # code..
-     $code=[];
-     foreach(explode('-',$patern) as $xxx){
-         $code[]=$this->Gen(strlen($xxx));
-     }
-     return implode('-',$code);
-
-    }
-
-
-
 
 
 
