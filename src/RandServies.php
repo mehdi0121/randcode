@@ -6,45 +6,79 @@ class RandServies
 {
     use RandFather;
 
-
-    public function Giftcard($pat)
+    /**
+     * Giftcard function
+     *
+     * @return void
+     */
+    public function Giftcard()
     {
-        # code...
-        return $this->Pattern("xxx-xxx-xxx");
+        return $this->CHECKCOUNTWITHPattern("xxx-xxx-xxx");
     }
 
-    public function SerialNumber()
+    /**
+     * SerialNumber function
+     *
+     * @param [type] $patern
+     * @return void
+     */
+    public function SerialNumber($patern=null)
     {
-        if($this->count>1){
-            $list=[];
-                for ($i=0; $i < $this->count ; $i++) {
-                    # code...
-                   $list[]=$this->Pattern($this->serialPatern);
-                }
-            return collect($list);
-        }
-        return $this->Pattern($this->serialPatern);
+        return $this->CHECKCOUNTWITHPattern($patern??$this->serialPatern);
     }
 
+    /**
+     * CustomPatern function
+     *
+     * @param [type] $patern
+     * @param boolean $inlower
+     * @param boolean $isnum
+     * @param boolean $isuper
+     * @param boolean $char
+     * @return void
+     */
+    public function CustomPatern($patern,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    {
+        return $this->CHECKCOUNTWITHPattern($patern,$inlower,$isnum,$isuper,$char);
+    }
 
-    public function count(int $len)
+    /**
+     * @method Strong
+     *
+     * @param integer $len
+     * @return void
+     */
+    public function Strong($len=8)
+    {
+        return $this->CHECKCOUNTWITHGEN($len,1,1,1,1);
+    }
+
+    /**
+     * Length function
+     *
+     * @param [type] $len
+     * @param boolean $inlower
+     * @param boolean $isnum
+     * @param boolean $isuper
+     * @param boolean $char
+     * @return void
+     */
+    public function Length ($len,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    {
+        return $this->CHECKCOUNTWITHGEN($len,$inlower,$isnum,$isuper,$char);
+    }
+
+    /**
+     * Count function
+     *
+     * @param integer $len
+     * @return void
+     */
+    public function Count(int $len)
     {
         # code...
         $this->count=$len;
         return $this;
     }
-
-    public function Pattern($patern,$inlower=true,$isnum=true,$isuper=true)
-    {
-      # code..
-     $code=[];
-     foreach(explode('-',$patern) as $xxx){
-         $code[]=$this->Gen(strlen($xxx));
-     }
-     return implode('-',$code);
-
-    }
-
-
 
 }

@@ -9,24 +9,57 @@ trait RandFather
 
     public $serialPatern="xxxx-xxxx-xxxx-xxxx";
     public $count=1;
-    public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true)
+
+
+    public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true,$cha=false)
     {
-        # code...
         $num=$isnum?"0123456789":'';
         $lower=$inlower?"abcdefghijklmnopqrstuvwxyz":'';
         $uper=$isuper?"ABCDEFGHIJKLMNOPQRSTUVWXYZ":'';
-        $list=$num.$lower.$uper;
+        $cha=$cha?"!@#$%^&*()-=<>?":'';
+        $list=$num.$lower.$uper.$cha;
         $countlist=strlen($list);
         $code="";
         for($i=0;$i<$len;$i++){
             $code.=$list[rand(0,$countlist-1)];
         }
-        return $code;
+        return str_shuffle($code);
     }
 
+    protected function Pattern($patern,$inlower=true,$isnum=true,$isuper=true)
+    {
+      # code..
+     $code=[];
+     foreach(explode('-',$patern) as $xxx){
+         $code[]=$this->Gen(strlen($xxx));
+     }
+     return implode('-',$code);
 
+    }
 
+    public function CHECKCOUNTWITHPattern($patern,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    {
+        # code...
+        if($this->count>1){
+            $list=[];
+                for ($i=0; $i < $this->count ; $i++) {
+                    # code...
+                   $list[]=$this->Pattern($patern,$inlower,$isnum,$isuper,$char);
+                }
+            return collect($list);
+        }
+        return $this->Pattern($patern,$inlower,$isnum,$isuper,$char);
+    }
 
-
-
+    public function CHECKCOUNTWITHGEN($len=8,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    {
+        if($this->count>1){
+            $list=[];
+                for ($i=0; $i < $this->count ; $i++) {
+                   $list[]=$this->Gen($len,$inlower,$isnum,$isuper,$char);
+                }
+            return collect($list);
+        }
+        return $this->Gen($len,$inlower,$isnum,$isuper,$char);
+    }
 }
