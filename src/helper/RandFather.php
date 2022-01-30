@@ -21,12 +21,21 @@ class RandFather
         return $code;
     }
 
-
-    public function SerialNumber($patern=null)
+    public function Giftcard($pat)
     {
+        # code...
+        return $this->Gen("xxx-xxx-xxx",false);
+    }
 
-     # code..
-     $patern=$patern ?? $this->serialPatern;
+    public function SerialNumber()
+    {
+        return $this->Gen($this->serialPatern);
+    }
+
+
+    public function Pattern($patern)
+    {
+      # code..
      $code=[];
      foreach(explode('-',$patern) as $xxx){
          $code[]=$this->Gen(strlen($xxx));
@@ -35,16 +44,6 @@ class RandFather
 
     }
 
-
-    // public function Pattern($patern)
-    // {
-    //     # code..
-    //     $code=[];
-    //     foreach(explode('-',$patern) as $xxx){
-    //         $code[]=$this->Gen(strlen($xxx));
-    //     }
-    //     return implode('-',$code);
-    // }
 
 
 
