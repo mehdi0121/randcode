@@ -6,13 +6,6 @@ namespace Mehdi0121\Randcode\helper;
 class RandFather
 {
     public $serialPatern="xxxx-xxxx-xxxx-xxxx";
-
-
-
-
-
-
-
     public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true)
     {
         # code...
@@ -31,7 +24,7 @@ class RandFather
 
     public function SerialNumber($patern=null)
     {
-        
+
      # code..
      $patern=$patern ?? $this->serialPatern;
      $code=[];

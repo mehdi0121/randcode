@@ -11,7 +11,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Mehdi0121\\Randcode\\":"src/"
+            "Mehdi0121\\Randcode\\":"src/",
+            " Mehdi0121\\Randcode\\helper":"src/helper"
         }
     },
     "extra": {
