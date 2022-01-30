@@ -3,7 +3,7 @@
 namespace Mehdi0121\Randcode\helper;
 
 
-class RandFather
+trait RandFather
 {
     public $serialPatern="xxxx-xxxx-xxxx-xxxx";
     public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true)
