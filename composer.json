@@ -1,0 +1,27 @@
+{
+    "name": "mehdi0121/randcode",
+    "description": "d",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mehdi Ardeshir",
+            "email": "mehdi0121.ir@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Mehdi0121\\Randcode\\":"src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mehdi0121\\Randcode\\RandCodeServiceProvider"
+            ],
+            "aliases": {
+                "RandCode": "Mehdi0121\\Randcode\\Randcode"
+            }
+        }
+    }
+}
