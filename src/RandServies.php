@@ -6,36 +6,37 @@ class RandServies
 {
     use RandFather;
 
+
     /**
-     * Giftcard function
+     * @method  SerialNumber()
      *
-     * @return void
+     * @return array|string
+     */
+    public function SerialNumber()
+    {
+        return $this->CHECKCOUNTWITHPattern($this->serialPatern,0,1,1,0);
+    }
+
+
+    /**
+     * @method Giftcard()
+     *
+     * @return array|string
      */
     public function Giftcard()
     {
-        return $this->CHECKCOUNTWITHPattern("xxx-xxx-xxx");
+        return $this->CHECKCOUNTWITHPattern("111-yyy-111",0,1,1,0);
     }
 
     /**
-     * SerialNumber function
+     * @method  CustomPatern()
      *
-     * @param [type] $patern
-     * @return void
-     */
-    public function SerialNumber($patern=null)
-    {
-        return $this->CHECKCOUNTWITHPattern($patern??$this->serialPatern);
-    }
-
-    /**
-     * CustomPatern function
-     *
-     * @param [type] $patern
+     * @param integer $patern
      * @param boolean $inlower
      * @param boolean $isnum
      * @param boolean $isuper
      * @param boolean $char
-     * @return void
+     * @return array|string
      */
     public function CustomPatern($patern,$inlower=true,$isnum=true,$isuper=true,$char=false)
     {
@@ -43,10 +44,10 @@ class RandServies
     }
 
     /**
-     * @method Strong
+     * @method Strong()
      *
      * @param integer $len
-     * @return void
+     * @return array|string
      */
     public function Strong($len=8)
     {
@@ -54,14 +55,14 @@ class RandServies
     }
 
     /**
-     * Length function
+     * @method  Length()
      *
-     * @param [type] $len
+     * @param integer $len
      * @param boolean $inlower
      * @param boolean $isnum
      * @param boolean $isuper
      * @param boolean $char
-     * @return void
+     * @return array|string
      */
     public function Length ($len,$inlower=true,$isnum=true,$isuper=true,$char=false)
     {
@@ -72,11 +73,10 @@ class RandServies
      * Count function
      *
      * @param integer $len
-     * @return void
+     * @return @this
      */
     public function Count(int $len)
     {
-        # code...
         $this->count=$len;
         return $this;
     }
