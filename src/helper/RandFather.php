@@ -30,8 +30,9 @@ trait RandFather
     {
      $code=[];
      foreach(explode('-',$patern) as $xxx){
-         if(stripos($xxx,"1",true)){
-            $code[]=$this->Gen(strlen($xxx),0,1,0,0);
+         if(stripos($xxx,"x",true)){
+		//if(stripos($xxx,"1",true)){
+			$code[]=$this->Gen(strlen($xxx),0,1,0,0);
          }elseif (stripos($xxx,"y",true)){
             $code[]=$this->Gen(strlen($xxx),0,0,1,0);
          }else{
