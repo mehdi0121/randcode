@@ -1,7 +1,6 @@
 # Random Code Generator For Laravel
 ![Packagist Downloads](https://img.shields.io/packagist/dt/mehdi0121/randcode?color=green)
-![Packagist License](https://img.shields.io/packagist/l/mehdi0121/randcode)
-![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/mehdi0121/randcode)
+![GitHub](https://img.shields.io/github/license/mehdi0121/randcode)
 ![Packagist Stars](https://img.shields.io/packagist/stars/mehdi0121/randcode)
 
 
