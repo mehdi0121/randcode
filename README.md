@@ -3,8 +3,6 @@
 ![Packagist License](https://img.shields.io/packagist/l/mehdi0121/randcode)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/mehdi0121/randcode)
 ![Packagist Stars](https://img.shields.io/packagist/stars/mehdi0121/randcode)
-
-
 **with this package you can make**
 
 * Serial Numbers => `N9TT-9G0A-B7FQ-RANC`

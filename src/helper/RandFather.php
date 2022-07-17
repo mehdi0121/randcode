@@ -5,16 +5,13 @@ namespace Mehdi0121\Randcode\helper;
 
 trait RandFather
 {
-
-
     public $serialPatern="xxxx-xxxx-xxxx-xxxx";
     public $count=1;
 
-
-    public function Gen($len=3,$inlower=true,$isnum=true,$isuper=true,$cha=false)
+    public function Gen($len=3,$islower=true,$isnum=true,$isuper=true,$cha=false)
     {
         $num=$isnum?"0123456789":'';
-        $lower=$inlower?"abcdefghijklmnopqrstuvwxyz":'';
+        $lower=$islower?"abcdefghijklmnopqrstuvwxyz":'';
         $uper=$isuper?"ABCDEFGHIJKLMNOPQRSTUVWXYZ":'';
         $cha=$cha?"!@#$%^&*()-=<>?":'';
         $list=$num.$lower.$uper.$cha;
@@ -23,48 +20,54 @@ trait RandFather
         for($i=0;$i<$len;$i++){
             $code.=$list[rand(0,$countlist-1)];
         }
-        return str_shuffle($code);;
+
+       return str_shuffle($code);
     }
 
-    protected function Pattern($patern,$inlower=true,$isnum=true,$isuper=true,$cha=false)
+    protected function Pattern($patern,$islower=true,$isnum=true,$isuper=true,$cha=false)
     {
      $code=[];
-     foreach(explode('-',$patern) as $xxx){
-         if(stripos($xxx,"x",true)){
-		//if(stripos($xxx,"1",true)){
-			$code[]=$this->Gen(strlen($xxx),0,1,0,0);
-         }elseif (stripos($xxx,"y",true)){
-            $code[]=$this->Gen(strlen($xxx),0,0,1,0);
-         }else{
-            $code[]=$this->Gen(strlen($xxx),$inlower,$isnum,$isuper,$cha);
-         }
+     foreach(explode('-',$patern) as $paternpart){
 
+        $Part_split_list=[];
+        foreach (str_split($paternpart) as  $partsplit) {
+            if($partsplit=="x"){
+                $Part_split_list[]=$this->Gen(1,0,1,0,0);
+            }
+            elseif($partsplit=="y"){
+                $Part_split_list[]=$this->Gen(1,0,0,1,0);
+            }
+            else{
+                $Part_split_list[]=$this->Gen(1,1,1,1,1);
+            }
+        }
+        $code[]=implode("",$Part_split_list);
      }
      return implode('-',$code);
 
     }
 
-    protected function CHECKCOUNTWITHPattern($patern,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    protected function CHECKCOUNTWITHPattern($patern,$islower=true,$isnum=true,$isuper=true,$char=false)
     {
         if($this->count>1){
             $list=[];
             for ($i=0; $i < $this->count ; $i++) {
-               $list[]=$this->Pattern($patern,$inlower,$isnum,$isuper,$char);
+               $list[]=$this->Pattern($patern,$islower,$isnum,$isuper,$char);
             }
             return collect($list);
         }
-        return $this->Pattern($patern,$inlower,$isnum,$isuper,$char);
+        return $this->Pattern($patern,$islower,$isnum,$isuper,$char);
     }
 
-    protected function CHECKCOUNTWITHGEN($len=8,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    protected function CHECKCOUNTWITHGEN($len=8,$islower=true,$isnum=true,$isuper=true,$char=false)
     {
         if($this->count>1){
             $list=[];
             for ($i=0; $i < $this->count ; $i++) {
-               $list[]=$this->Gen($len,$inlower,$isnum,$isuper,$char);
+               $list[]=$this->Gen($len,$islower,$isnum,$isuper,$char);
             }
             return collect($list);
         }
-        return $this->Gen($len,$inlower,$isnum,$isuper,$char);
+        return $this->Gen($len,$islower,$isnum,$isuper,$char);
     }
 }
