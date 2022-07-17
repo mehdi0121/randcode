@@ -25,7 +25,7 @@ class RandServies
      */
     public function Giftcard()
     {
-        return $this->CHECKCOUNTWITHPattern("111-yyy-111",0,1,1,0);
+        return $this->CHECKCOUNTWITHPattern("xxx-yyy-xxx",0,1,1,0);
     }
 
     /**
@@ -49,7 +49,7 @@ class RandServies
      * @param integer $len
      * @return array|string
      */
-    public function Strong($len=8)
+    public function Strong(int $len=8)
     {
         return $this->CHECKCOUNTWITHGEN($len,1,1,1,1);
     }
@@ -64,7 +64,7 @@ class RandServies
      * @param boolean $char
      * @return array|string
      */
-    public function Length ($len,$inlower=true,$isnum=true,$isuper=true,$char=false)
+    public function Length (int $len,$inlower=true,$isnum=true,$isuper=true,$char=false)
     {
         return $this->CHECKCOUNTWITHGEN($len,$inlower,$isnum,$isuper,$char);
     }
